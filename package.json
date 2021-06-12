@@ -20,8 +20,11 @@
   },
   "homepage": "https://github.com/BurhanKhom/ProShop#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.12.13"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",

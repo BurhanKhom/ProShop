@@ -1,22 +1,18 @@
 const app = require('express')();
 const dotenv = require('dotenv');
-const products = require('./products')
+const products = require('./products');
+const dbConnector = require('./config/dbConnector');
+
+const productsRouter = require('./routes/productsRoute');
+
+app.use('/api/products', productsRouter);
 
 dotenv.config();
 
+dbConnector.connectToDb();
+
 app.get('/', (req, res) => {
     res.send('Server is up and running!');
-});
-
-
-app.get('/api/products', (req, res) => {
-    res.json(products);
-});
-
-app.get('/api/product/:id', (req, res) => {
-    res.json(products.find( product =>
-        req.params.id === product._id
-    ));
 });
 
 const PORT = process.env.PORT || 5000
