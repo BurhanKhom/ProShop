@@ -9,13 +9,12 @@ import { listProducts } from '../actions/productActions'
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
-
-    const { loading, error, products } = useSelector(state => state.productList);
-
     useEffect(() => {
         dispatch(listProducts());
     }, [dispatch]);
-
+    
+    const { loading, error, products } = useSelector(state => state.productList);
+    
     return (
         <>
             <h1>Latest Products</h1>
