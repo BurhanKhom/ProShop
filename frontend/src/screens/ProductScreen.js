@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
 
-    const [qty, setQty] = useState(0);
+    const [qty, setQty] = useState(1);
 
 
     const dispatch = useDispatch();
@@ -19,7 +19,13 @@ const ProductScreen = ({ match }) => {
     }, [dispatch, match]);
 
     const { loading, error, product } = useSelector(state => state.productDetails);
-    // let product = {}, loading=false, error='';
+    
+    
+    const addToCardHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
+
+
     return (
         <>
             <Link to='/' className='btn btn-light'>&#8592; Go Back</Link>
@@ -38,7 +44,7 @@ const ProductScreen = ({ match }) => {
                                         <Rating rating={product.rating} numReviews={product.numReviews} color='#FDCC0D' />
                                     </ListGroup.Item>
                                     <ListGroup.Item className='pt-3'>
-                                        <h2>Rs. {product.price}</h2>
+                                        <h2>&#8377;{product.price}</h2>
                                     </ListGroup.Item>
                                     <ListGroup.Item>
                                         {product.description} <br />
@@ -82,13 +88,18 @@ const ProductScreen = ({ match }) => {
                                                     </ListGroup.Item>)
                                             }
                                             <ListGroup.Item>
-                                                Status: {
-                                                    product.countInStock > 0 ?
-                                                        <span style={{ color: 'green' }}>{'In Stock'}</span> :
-                                                        <span style={{ color: 'red' }}>{'Out of Stock'}</span>
-                                                }
+                                                <Row>
+                                                    <Col>Status</Col>
+                                                    <Col>{
+                                                        product.countInStock > 0 ?
+                                                            <span style={{ color: 'green' }}>{'In Stock'}</span> :
+                                                            <span style={{ color: 'red' }}>{'Out of Stock'}</span>
+                                                    }</Col>
+                                                </Row>
                                             </ListGroup.Item>
-                                            <Button block disabled={product.countInStock === 0}>Add to cart</Button>
+                                            <Button
+                                                onClick={addToCardHandler}
+                                                block disabled={product.countInStock === 0}>Add to cart</Button>
                                         </ListGroup>
                                     </Card.Body>
                                 </Card>
