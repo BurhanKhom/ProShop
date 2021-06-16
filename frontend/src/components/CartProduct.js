@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ListGroup, Button, Row, Col, Image, Form } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const CartProduct = ({ item }) => {
     const dispatch = useDispatch();
@@ -48,11 +48,12 @@ const CartProduct = ({ item }) => {
                     <Col md={3} style={{
                         fontWeight: 'bold'
                     }}>
-                        &#8377;{Number(item.price) * Number(item.qty)}
+                        &#8377;{Number(item.price).toFixed(2)}
                     </Col>
                     <Col md={2}>
-                        <Button variant='outline-dark' size='sm'>
-                            <i className='fas fa-trash'></i>
+                        <Button variant='light' size='sm' className='delButton'
+                            onClick={() => dispatch(removeFromCart(item._id))}>
+                            <i className='fas fa-trash fa-2x'></i>
                         </Button>
                     </Col>
                 </Row>

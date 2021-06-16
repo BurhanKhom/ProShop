@@ -46,9 +46,7 @@ const orderSchema = mongoose.Schema({
         },
         zip: {
             type: Number,
-            required: true,
-            min: [6, 'Zip must be atleast 6 digits'],
-            max: [6, 'Zip must be atmost 6 digits']
+            required: true
         }
     },
     shippedAt: {
@@ -74,9 +72,9 @@ const orderSchema = mongoose.Schema({
         required: true
     },
     paymentData: {
-        id: { type: String },
-        status: { type: String },
-        email: { type: String },
+        payment_id: { type: String },
+        order_id: { type: String },
+        signature: { type: String },
         updateTime: { type: String },
     },
     isPaid: {

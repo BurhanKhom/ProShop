@@ -2,11 +2,57 @@ main {
   min-height: 80vh;
 }
 
-
 h1 {
-  padding: 1rem;
+  padding: 0.2rem;
 }
 
 .row {
   padding: 0.2rem;
+}
+
+.delButton:hover {
+  color: red;
+}
+
+.form-label {
+  padding-top: 0.8rem;
+  /* padding-bottom: 0.5rem; */
+}
+
+.card-subtitle {
+  font-size: 1rem;
+  padding: 0.6rem;
+  color: gray;
+}
+
+.card-title {
+  font-size: 0.9rem;
+  padding: 0.5rem;
+}
+
+.card-text {
+  padding: 0.5rem;
+  color: black;
+}
+
+.estimatedDeliveryDate {
+  color: darkgreen;
+  font-size: large;
+}
+
+.orderTotal {
+  font-size: 1.6rem;
+  color: black;
+}
+
+.fa-check-circle {
+  color: green;
+}
+
+.fa-times {
+  color: red;
+}
+
+.profileOrdersList {
+  font-size: small;
 }

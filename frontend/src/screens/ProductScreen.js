@@ -34,10 +34,10 @@ const ProductScreen = ({ history, match }) => {
                     (
 
                         <Row className='p-3'>
-                            <Col md={5} className='p-2'>
+                            <Col md={4} className='p-2'>
                                 <Image src={product.image} fluid />
                             </Col>
-                            <Col md={4} className='p-2'>
+                            <Col md={5} className='p-2'>
                                 <ListGroup variant='flush'>
                                     <ListGroup.Item>
                                         <h3>{product.name}</h3>

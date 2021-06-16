@@ -9,17 +9,18 @@ import { listProducts } from '../actions/productActions'
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(listProducts());
     }, [dispatch]);
-    
+
     const { loading, error, products } = useSelector(state => state.productList);
-    
+
     return (
         <>
             <h1>Latest Products</h1>
             {
-                loading ? <Loader /> : error ? <Message message={error} variant='danger'/> :
+                loading ? <Loader /> : error ? <Message message={error} variant='danger' /> :
                     <Row>
                         {
                             products.map(product => {
